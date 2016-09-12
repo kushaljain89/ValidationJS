@@ -1,0 +1,363 @@
+<!--The bootsrap sidebar used in the web page is referenced from https://startbootstrap.com/template-overviews/simple-sidebar/-->
+<!--
+Author: Kushal Jain, NIT Uttarakhand
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ValidationJS</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/simple-sidebar.css" type="text/css"/>
+    </head>
+    <body onload="click_intro();">
+        <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                        <h1>validationJS</h1>
+                </li>
+                <li>
+                    <a href="#" onclick="click_intro();"><strong>Introduction</strong></a>
+                </li>
+                <li>
+                    <a href="#" onclick="click_usage();"><strong>How to use</strong></a>
+                </li>
+                <li>
+                    <a href="#" onclick="click_demo();"><strong>Live Demo</strong></a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu-Toggle</a>
+                        <div id="intro">
+                            <h1>Introduction to validationJS</h1>
+                            <p>
+                                validationJS is a small library developed to validate text type input controls in html forms.
+                                It validates the following:
+                                <ol>
+                                    <li>URL</li>
+                                    <li>Number</li>
+                                    <li>E-mail</li>
+                                    <li>U.S. Phone numbers</li>
+                                    <li>U.S. Zip Codes</li>
+                                    <li>Credit Cards</li>
+                                </ol>
+                                The library is developed purely in JavaScript and its usage is simple. It makes the use of classes to use validations. 
+                            </p>
+                            <p>
+                                For reading the source <a href="js/validation.js">click here</a>
+                            </p>
+                            <p>
+                            For detailed instructions read the next section of this documentation.
+                            </p>
+                        </div>
+                        <div id="usage">
+                            <h1>How to use validationJS</h1>
+                            <p>Before starting with the usage, you need to include the library in your HTML page.
+                                <div class="well">
+                                    <code>
+                                        <div>
+                                            &lt;!DOCTYPE html&gt;
+                                        </div>
+                                        <div>
+                                            &lt;html lang="en"&gt;
+                                        </div>
+                                        <div>
+                                            &lt;head&gt;
+                                        </div>
+                                        <div>
+                                            &lt;title&gt;validation demo&lt;/title&gt;
+                                        </div>
+                                        <div>
+                                            &lt;/head&gt;
+                                        </div>
+                                        <div>
+                                            &lt;body&gt;
+                                        </div>
+                                        <div>
+                                            &lt;!--your HTML code should be placed here--&gt;
+                                        </div>
+                                        <div>
+                                            &lt;script src="js/validation.js"&gt;&lt;/script&gt;
+                                        </div>
+                                        <div>
+                                            &lt;/body&gt;
+                                        </div>
+                                        <div>
+                                            &lt;/html&gt;
+                                        </div>
+                                    </code>
+                                </div>
+                                Remember to always include the library source at the end of body otherwise it won't run. This is to ensure that script is loaded after the complete loading of the document.
+                            </p>
+                            <p>
+                                It is quite easy to use validationJS. There are different classes available for different validation types.
+                            </p>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>validate-url</td>
+                                    <td>It will validate the url</td>
+                                </tr>
+                                <tr>
+                                    <td>validate-number</td>
+                                    <td>It will validate any numeric input</td>
+                                </tr>
+                                <tr>
+                                    <td>validate-email</td>
+                                    <td>It will validate the email address</td>
+                                </tr>
+                                <tr>
+                                    <td>validate-phone</td>
+                                    <td>It will validate the U.S. phone numbers</td>
+                                </tr>
+                                <tr>
+                                    <td>validate-zipcode</td>
+                                    <td>It will validate the U.S. Zip code</td>
+                                </tr>
+                                <tr>
+                                    <td>validate-creditcard</td>
+                                    <td>It will validate the Visa, MasterCard, American Express, Diners Club, Discover, and JCB credit cards</td>
+                                </tr>
+                            </table>
+                            <p>
+                                To make the form check these validations in the form text controls before submitting the data, you need to give a <mark>class="validate-form"</mark> to the form. There can be more than one form in the html page.
+                            </p>
+                            <p>
+                                You may also use validation without forms using the library validation classes and code it according to your wish by just checking the value of the attribute <mark>error_flag</mark> in the javascript.
+                            </p>
+                            <hr/>
+                            <h2>Using validationJS with forms</h2>
+                            <hr/>
+                            <p>
+                                Firstly create a form in html with <mark>class="validate-form"</mark>
+                                <div class="well">
+                                    <code>
+                                        &lt;form method="" action="" class="validate-form"&gt;
+                                    </code>
+                                </div>
+                                Then when you want to create the validations just simply use the validation classes.
+                                <div class="well">
+                                    <code>
+                                        &lt;label for="text_url"&gt;Enter the URL for youtube&lt;/label&gt;
+                                        &lt;input type="text" class="validate-url" id="text_url"/&gt;
+                                    </code>
+                                </div>
+                                The above code will make the textbox active for url validation. When you will enter the data and the focus will be blurred, the data will automatically be validated and will indicate the validation status via the border of the textbox. The red border will indicate invalid data and green one will indicate valid data.
+                            </p>
+                            <p>
+                                Finally, create the submit button to complete the form.
+                                <div class="well">
+                                    <code>
+                                        &lt;input type="submit" value="submit"/&gt;
+                                    </code>
+                                </div>
+                                The submit button will be used to submit the form data. Submitting the data is not possible until the data in the form is valid. As soon as you will try to submit the invalid data, an alert message will be displayed indicating the number of invalid data fields in the form.
+                            </p>
+                            <p>
+                                The output for the above code will be: 
+                                <div class="well">
+                                    <form class="validate-form">
+                                        <label for="text_url">Enter the URL for youtube</label>
+                                        <input type="text" class="validate-url" id="text_url"/>
+                                        <input type="submit" value="submit"/>
+                                    </form>
+                                </div>
+                            </p>
+                            <p>
+                                Similarly you can use other classes as well in the similar way. Examples are: 
+                                <div class="well">
+                                    <div>
+                                        <code>
+                                            &lt;label for="text_number"&gt;Enter any number&lt;/label&gt;
+                                            &lt;input type="text" class="validate-number" id="text_number"/&gt;
+                                        </code>
+                                    </div>
+                                    <div>
+                                        <code>
+                                            &lt;label for="text_email"&gt;Enter your E-mail&lt;/label&gt;
+                                            &lt;input type="text" class="validate-email" id="text_email"/&gt;
+                                        </code>
+                                    </div>
+                                    <div>
+                                        <code>
+                                            &lt;label for="text_phone"&gt;Enter U.S. phone number&lt;/label&gt;
+                                            &lt;input type="text" class="validate-phone" id="text_phone"/&gt;
+                                        </code>
+                                    </div>
+                                    <div>
+                                        <code>
+                                            &lt;label for="text_zip"&gt;Enter U.S. Zip Code&lt;/label&gt;
+                                            &lt;input type="text" class="validate-zipcode" id="text_zip"/&gt;
+                                        </code>
+                                    </div>
+                                    <div>
+                                        <code>
+                                            &lt;label for="text_credit"&gt;Enter Credit Card&lt;/label&gt;
+                                            &lt;input type="text" class="validate-creditcard" id="text_credit"/&gt;
+                                        </code>
+                                    </div>
+                                </div>
+                            </p>
+                            <hr/>
+                            <h2>Using validationJS without forms</h2>
+                            <hr/>
+                            <p>
+                                For using validationJS without forms, you just need to make a control without a form tag and give it an appropriate validation class.
+                                <div class="well">
+                                    <code>
+                                        &lt;label for="text_email"&gt;Enter your E-mail&lt;/label&gt;
+                                        &lt;input type="text" class="validate-email" id="text_email"/&gt;
+                                        &lt;button type="button" onclick="check_value()"&gt;check&lt;/button&gt;
+                                    </code>
+                                </div>
+                                This control will also change its border to red if invalid data is entered and green if valid data is entered. You may get the element in javascript using the Id you gave to it and check its error_flag attribute. The value of the attribute is "1" if invalid data is entered and it is "0" if valid data is entered. The appropriate message can be displayed by checking this value in Javascript.
+                            </p>
+                            <p>
+                                <div class="well">
+                                    <code>
+                                        <div>
+                                            &lt;script&gt;
+                                        </div>
+                                        <div>
+                                            function check_value(){
+                                        </div>
+                                        <div>
+                                            var mail = document.getElementById("text_email");
+                                        </div>
+                                        <div>
+                                            if(mail.getAttribute("error_flag") === "1"){alert("Invalid E-mail entered!!!");}
+                                        </div>
+                                        <div>
+                                            else{alert("E-mail address is in correct format!!!");}
+                                        </div>
+                                        <div>
+                                            }
+                                        </div>
+                                        &lt;/script&gt;
+                                    </code>
+                                </div>
+                            </p>
+                            <p>
+                                The output for the above code will be:
+                                <div class="well">
+                                    <label for="text_email">Enter your E-mail</label>
+                                    <input type="text" class="validate-email" id="text_email"/>
+                                    <button type="button" onclick="check_value()">Check</button>
+                                     <script>
+                                        function check_value(){
+                                        var mail = document.getElementById("text_email");
+                                        if(mail.getAttribute("error_flag") === "1"){alert("Invalid E-mail entered!!!");}
+                                        else{alert("E-mail address is in correct format!!!");}
+                                        }
+                                    </script>
+                                </div>
+                            </p>
+                            <p>
+                                The output and the complete demonstration in the <mark>live demo section</mark>. The form is made using <mark>validation.js</mark> and <mark>bootstrap.css</mark>.
+                            </p>
+                        </div>
+                        <div id="demo">
+                            <h1>Live Demo</h1>
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-6">
+                                    <form class="validate-form">
+                                        <div class="form-group">
+                                            <label for="txt_url_google">Url for google</label>
+                                            <input type="text" placeholder="url for google..." class="validate-url form-control" id="txt_url_google"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_url_fb">Url for facebook</label>
+                                            <input type="text" placeholder="url for facebook..." class="validate-url form-control" id="txt_url_fb"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_age">Age</label>
+                                            <input type="text" placeholder="age..." class="validate-number form-control" id="txt_age"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_id">Student Id Number</label>
+                                            <input type="text" placeholder="id number..." class="validate-number form-control" id="txt_id"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_email">Primary E-mail</label>
+                                            <input type="text" placeholder="email..." class="validate-email form-control" id="txt_email"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_email_alt">Secondary/Alternate E-mail</label>
+                                            <input type="text" placeholder="alternate email..." class="validate-email form-control" id="txt_email_alt"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_phone">Primary Phone</label>
+                                            <input type="text" placeholder="phone..." class="validate-phone form-control" id="txt_phone"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_phone_alt">Secondary/Alternate Phone</label>
+                                            <input type="text" placeholder="alternate phone..." class="validate-phone form-control" id="txt_phone_alt"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_zip">Zip Code</label>
+                                            <input type="text" placeholder="zipcode..." class="validate-zipcode form-control" id="txt_zip"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_credit">Credit Card</label>
+                                            <input type="text" placeholder="credit card..." class="validate-creditcard form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="submit" class="btn btn-success"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+    </div>
+    <!-- /#wrapper -->
+        <script src="js/validation.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            function click_intro()
+            {
+                document.getElementById('intro').style.display='block';
+                document.getElementById('usage').style.display='none';
+                document.getElementById('demo').style.display='none';
+            }
+            function click_usage()
+            {
+                document.getElementById('intro').style.display='none';
+                document.getElementById('usage').style.display='block';
+                document.getElementById('demo').style.display='none';
+            }
+            function click_demo()
+            {
+                document.getElementById('intro').style.display='none';
+                document.getElementById('usage').style.display='none';
+                document.getElementById('demo').style.display='block';
+            }
+        </script>
+        <script src="js/jquery.js"></script>
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>
